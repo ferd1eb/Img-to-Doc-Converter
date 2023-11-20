@@ -7,15 +7,16 @@ from tkinter import filedialog, messagebox
 root = Tk()  # creating tkinter window
 root.geometry('500x200')  # setting window size
 root.title('Img to Doc Converter')  # setting window title
-root.wm_iconbitmap('icon.ico')  # setting window icon
+# root.wm_iconbitmap('icon.ico')  # setting window icon
 
 # calling pytesseract from directory
-pytesseract.tesseract_cmd = r'C:/Users/MadGeek/AppData/Local/Programs/Tesseract-OCR/tesseract.exe'
+# pytesseract.tesseract_cmd = r'C:/Users/MadGeek/AppData/Local/Programs/Tesseract-OCR/tesseract.exe'
+pytesseract.tesseract_cmd = r'/usr/bin/tesseract'
 
 # browse file function
 def browsefunc():
     global filename 
-    filename = filedialog.askopenfilename(title='Select a file', filetypes=(('JPEG (*.JPG; *.JPEG; *.JPE)', '*.jpg'), ('PNG (*.PNG)', '*.png'), ('All Files (*.*)', '*.*')))
+    filename = filedialog.askopenfilename(title='Select a file', filetypes=(('JPEG (*.JPG; *.JPEG; *.JPE)', '*.jp*g'), ('PNG (*.PNG)', '*.png'), ('All Files (*.*)', '*.*')))
     path.set(filename)
 
 # open output directory function
@@ -52,7 +53,7 @@ l1 = Label(root, text='Img to Doc Converter', font=('roboto bold', 20)).place(re
 # variable
 path = StringVar()
 # entry
-e1 = Entry(root, width=50, textvariable=path).place(relx=0.4, rely=0.5, anchor=CENTER)
+e1 = Entry(root, width=40, textvariable=path).place(relx=0.4, rely=0.5, anchor=CENTER)
 # buttons
 b1 = Button(root, text='Browse a file', font=('roboto', 10), command=browsefunc).place(relx=0.85, rely=0.5, anchor=CENTER)
 b2 = Button(root, text='Output Folder', font=('roboto bold', 10), bg='gray', fg='white', command=output_dir).place(relx=0.3, rely=0.75, anchor=CENTER)
